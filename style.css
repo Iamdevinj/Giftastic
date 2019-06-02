@@ -1,0 +1,13 @@
+body {
+    background-image: url("../brands.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+   }
+
+   .container{
+       color: black;
+       
+   }
+   
