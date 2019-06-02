@@ -13,15 +13,28 @@ $(document).ready(function() {
 	})
 	.done(function(response) {
 	  console.log(response);
-	  
-	  let results = response.data;
+	  for (let index = 0; index < response.data.length; index++) {
+		  var searchDiv = $('<dic class="search-item">');
+		  var rating = response.data[i].rating;
+		  var p = $('<p>').text('Rating: ' +rating);
+		  var animated = response.data[i].images.fixed_height.url;
+		  var still = response.data[i].images.fixed_height_still.url;
+		  var image = $('<img>');
+		  image.attr('src',still);
+		  image.attr('data-still',still);
+		  image.attr('data-animated',animated);
+		  image.attr('data-state',still);
+		  image.addClass('searchImage');
+		  searchDiv.append(p);
+		  searchDiv.append(image);
+		  $('searches').append(searchDiv);
 
-	  for(var i=0; i<results.length; i++);{
-
-		  let brandImage = $("<img>");
-		  $("#add-brands").append(brandImage)
+	
+		  
 	  }
-    }
+	  
+	  }
+    
 )}
 
 
@@ -49,7 +62,9 @@ $(document).ready(function() {
 
   $("#add-button").on("click", function() {
 	// grab the value from the form
-	$("#new-brand").text(brands.val())
+	$("#add-button").text(brands.val())
+	
+	
 	
 
     // Add that value to the brands array push
