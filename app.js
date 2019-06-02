@@ -10,10 +10,20 @@ $(document).ready(function() {
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).done(function(response) {
-      console.log(response);
-    });
-  }
+	})
+	.done(function(response) {
+	  console.log(response);
+	  
+	  let results = response.data;
+
+	  for(var i=0; i<results.length; i++);{
+
+		  let brandImage = $("<img>");
+		  $("#add-brands").append(brandImage)
+	  }
+    }
+)}
+
 
   function createButtons() {
     // Creates the buttons from the array
@@ -22,10 +32,12 @@ $(document).ready(function() {
       button.attr("brand-name", brands[i]);
       button.addClass("brand-button");
       $("#button-brand").append(button);
-    }
+	}
+	
   }
-
+	
   createButtons();
+
 
   $("button").on("click", function() {
     var x = $(this).data("search");
@@ -36,10 +48,12 @@ $(document).ready(function() {
   });
 
   $("#add-button").on("click", function() {
-    // grab the value from the form
+	// grab the value from the form
+	$("#new-brand").text(brands.val())
+	
 
     // Add that value to the brands array push
-
+	brands.push(brand);
     // Run the code that creates all the buttons again
     createButtons();
   });
